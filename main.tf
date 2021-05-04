@@ -7,3 +7,13 @@ data "template_file" "test" {
     sample_var = "test"
   }
 }
+
+resource "null_resource" "sleep" {
+  triggers = {
+    uuid = uuid()
+  }
+
+  provisioner "local-exec" {
+    command = "sleep 5"
+  }
+}
